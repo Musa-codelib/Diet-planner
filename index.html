@@ -30,6 +30,22 @@
     <h2>Meal Plan</h2>
     <ul id="mealList"></ul>
 
+    <h2>BMI Calculator</h2>
+<form id="bmiForm">
+    <label for="feet">Height (Feet):</label>
+    <input type="number" id="feet" name="feet" required>
+
+    <label for="inches">Height (Inches):</label>
+    <input type="number" id="inches" name="inches" required>
+
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" name="weight" required>
+
+    <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+</form>
+
+<p id="bmiResult"></p>
+
     <script src="script.js"></script>
 </body>
 </html>
