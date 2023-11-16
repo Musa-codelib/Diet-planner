@@ -6,9 +6,36 @@ function addMeal() {
     var mealList = document.getElementById("mealList");
     var listItem = document.createElement("li");
     listItem.textContent = `${mealType} - ${foodItem} (${calories} calories)`;
+
+    // Add buttons for deleting and updating meals
+    listItem.innerHTML += `<button onclick="editMeal(this)">Edit</button>
+                           <button onclick="deleteMeal(this)">Delete</button>`;
+    
     mealList.appendChild(listItem);
 
     // You can add further logic here, such as storing the data in a database or localStorage.
+}
+
+// New function to delete a meal
+function deleteMeal(element) {
+    var listItem = element.parentElement;
+    var mealList = document.getElementById("mealList");
+    mealList.removeChild(listItem);
+}
+
+// New function to update a meal
+function editMeal(element) {
+    var listItem = element.parentElement;
+    var mealType = listItem.firstChild.textContent.split('-')[0].trim();
+    var foodItem = listItem.firstChild.textContent.split('-')[1].split('(')[0].trim();
+    var calories = listItem.firstChild.textContent.split('(')[1].split(' ')[0].trim();
+
+    document.getElementById("mealType").value = mealType;
+    document.getElementById("foodItem").value = foodItem;
+    document.getElementById("calories").value = calories;
+
+    // Delete the current meal after updating
+    deleteMeal(element);
 }
 
 function calculateBMI() {
